@@ -116,11 +116,3 @@ excel_filename = 'Готовая_таблица_Ад.xlsx'
 last_df.to_excel(excel_filename, index=False)
 
 
-git config --global user.name "Fanofsmesharicki"
-git config --global user.email "robertsuloev@gmail.com"
-cd "C:\Users\Эдгася\PycharmProjects\pythonProject\project-AD\done_parser.py"
-git init
-git remote add origin https://github.com/Fanofsmesharicki/project_AD_2024
-git push -u origin main
-git add done_parser.py
-git remote add origin https://github.com/Fanofsmesharicki/project_AD_2024.git
