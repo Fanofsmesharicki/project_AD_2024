@@ -1,3 +1,4 @@
+#Я не смогу делать markdownы,так как я так и не понял как в jupyter или colab подгрузить webdrivera ,а парсер делал не в VSC,а в pycharme(только в платнйо версии можно делать нотбуки с маркдаунами)
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -5,8 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchWindowException
 import time
 import pandas as pd
-
-# Ваши настройки браузера и запуск Firefox...
+# Тут просто настройки по браузеру для загрузки страницы ,чтобы ничего не мешало при парсинге,потому что при отсутсвии,парсер дохадил до какой-то определенной страницы сайта,напирмер 5 , и ломался
 option = webdriver.FirefoxOptions()
 option.set_preference("dom.webdriver.enabled", False)
 option.set_preference("media.volume_scale", "0.0")
@@ -19,6 +19,7 @@ pd.set_option('display.max_columns', None)
 browser = webdriver.Firefox(options=option)
 browser.get("https://www.transfermarkt.world/uefa-champions-league/marktwerte/pokalwettbewerb/CL")
 time.sleep(10)
+#На сайте ,при загрузке парсера ,а не заходе вручуню,вылазит какой-то банер,у которого то ли сломанные xpath,то ли он специально сделан так,чтобы парсеры не работали,но время добавлено,чтобы вручунб нажать кнопку,после ручного нажатия все работает нормаьно
 age_list=[]
 nation_list=[]
 position_list=[]
@@ -76,6 +77,7 @@ for j in range(1,10):
              liga_list.append("Лига 1")
          elif club not in clubs_liga_1 and club not in clubs_APl and club not in clubs_seria_a and club not in clubs_LA_liga and club not in clubs_bundesliga:
              liga_list.append("annother leage")
+#Непосредственно код по сбору данных с сайта через xpath ячеек
 
 
 
@@ -114,5 +116,6 @@ last_df.drop(columns=['Player'], inplace=True)
 print(last_df.head())
 excel_filename = 'Готовая_таблица_Ад.xlsx'
 last_df.to_excel(excel_filename, index=False)
+#Готовая таблица ,для анализа по ней,сделал в форме xlsx,чтобы если че было удобно экспортировать и сохранять в гите
 
 
